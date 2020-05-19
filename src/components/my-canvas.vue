@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <canvas
-            @mousedown="startPainting"
-            @mouseup="finishedPainting"
-            @mousemove="draw"
-            id="canvas"
-        ></canvas>
-    </div>
+    <canvas @mousedown="startPainting" 
+			@mouseup="finishedPainting" 
+			@mousemove="draw"
+			id="canvas"></canvas>
 </template>
 
 <script>
 export default {
+	// Clear
+	// Erase
     data() {
         return {
             message: "Hello world!",
@@ -37,17 +35,14 @@ export default {
         draw(e) {
             if (!this.painting) return;
 
-            this.ctx.lineWidth = 10;
+            this.ctx.lineWidth = 5;
             this.ctx.lineCap = "round";
 
-            this.ctx.lineTo(e.clientX, e.clientY);
-			this.ctx.stroke();
-			console.log(e.clientX, e.clientY)
+            this.ctx.lineTo(e.clientX, e.clientY - this.canvas.offsetTop);
+            this.ctx.stroke();
 
             this.ctx.beginPath();
-            this.ctx.moveTo(e.clientX, e.clientY);
-
-            console.log("event is working");
+            this.ctx.moveTo(e.clientX, e.clientY - this.canvas.offsetTop);
         }
     },
 
@@ -55,8 +50,8 @@ export default {
         this.canvas = document.querySelector("#canvas");
         this.ctx = this.canvas.getContext("2d");
 
-        this.canvas.height = window.innerHeight;
-        this.canvas.width = window.innerWidth;
+        this.canvas.height = 400;
+        this.canvas.width = 1000;
 
         this.vueCanvas = this.ctx;
     }
