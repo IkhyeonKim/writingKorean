@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     //   }).catch(err => {
     //     console.error(err)
     // })
-
+    
     res.sendFile(HTML_FILE)
 })
 

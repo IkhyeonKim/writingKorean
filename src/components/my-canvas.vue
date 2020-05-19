@@ -1,46 +1,64 @@
 <template>
-    <canvas @mousedown="startPainting" @mouseup="finishedPainting" id="canvas"></canvas>
+    <div>
+        <canvas
+            @mousedown="startPainting"
+            @mouseup="finishedPainting"
+            @mousemove="draw"
+            id="canvas"
+        ></canvas>
+    </div>
 </template>
 
 <script>
 export default {
-
     data() {
         return {
-            message: 'Hello world!',
+            message: "Hello world!",
+            canvas: null,
+            ctx: null,
+            painting: false,
             vueCanvas: null
-        }
+        };
     },
 
     methods: {
-        startPainting() {
-            this.painting = true
-            console.log('Started painting')
+        startPainting(e) {
+            this.painting = true;
+            console.log("Started painting");
+            this.draw(e);
         },
 
         finishedPainting() {
-            this.painting = false
-            console.log('Finished painting')
-        }
+            this.painting = false;
+            console.log("Finished painting");
+            this.ctx.beginPath();
+        },
 
+        draw(e) {
+            if (!this.painting) return;
+
+            this.ctx.lineWidth = 10;
+            this.ctx.lineCap = "round";
+
+            this.ctx.lineTo(e.clientX, e.clientY);
+			this.ctx.stroke();
+			console.log(e.clientX, e.clientY)
+
+            this.ctx.beginPath();
+            this.ctx.moveTo(e.clientX, e.clientY);
+
+            console.log("event is working");
+        }
     },
 
     mounted() {
-        const canvas = document.querySelector('#canvas')
-        const ctx = canvas.getContext('2d')
+        this.canvas = document.querySelector("#canvas");
+        this.ctx = this.canvas.getContext("2d");
 
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.canvas.width = window.innerWidth;
 
-        ctx.beginPath();
-        ctx.moveTo(100, 100)
-        ctx.lineTo(200, 100)
-        ctx.lineTo(200, 150)
-        ctx.closePath()
-        ctx.stroke()
-
-        this.vueCanvas = ctx
-    },
-
-}
+        this.vueCanvas = this.ctx;
+    }
+};
 </script>
