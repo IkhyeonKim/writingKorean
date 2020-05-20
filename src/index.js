@@ -8,5 +8,3 @@ const app = new Vue({
        'my-canvas': myCanvas
     }
 })
-
-console.log('index.js')
