@@ -1,26 +1,28 @@
 
 <template>
-    <canvas @mousedown="startPainting" 
-			@mouseup="finishedPainting" 
-			@mousemove="draw"
-			id="canvas"></canvas>
+    <div>
+        <canvas
+            @mousedown="startPainting"
+            @mouseup="finishedPainting"
+            @mousemove="draw"
+            id="canvas"
+        ></canvas>
+    </div>
 </template>
 
 <script>
-// import giyeok from '../assets/alphabets/consonants'
 export default {
-	// Clear
+    // Clear
     // Erase
-    
+    props: ["consonants", "vowels"],
+
     data() {
         return {
             message: "Hello world!",
             canvas: null,
             ctx: null,
             painting: false,
-            vueCanvas: null,
-            consonants: this.importAll(require.context('../assets/alphabets/consonants/', false, /\.(png|jpe?g|svg)$/)),
-            vowels: this.importAll(require.context('../assets/alphabets/vowels/', false, /\.(png|jpe?g|svg)$/)),
+            vueCanvas: null
         };
     },
 
@@ -48,10 +50,6 @@ export default {
 
             this.ctx.beginPath();
             this.ctx.moveTo(e.clientX, e.clientY - this.canvas.offsetTop);
-        },
-
-        importAll(r) {
-            return r.keys().map(r);
         }
     },
 
@@ -62,12 +60,12 @@ export default {
         this.canvas.height = 400;
         this.canvas.width = 1000;
 
-        const background = new Image()
-        background.src = this.consonants[0].default
+        const background = new Image();
+        background.src = this.consonants[0].default;
 
         background.onload = () => {
-            this.ctx.drawImage(background, 0 ,0)
-        }
+            this.ctx.drawImage(background, 0, 0);
+        };
 
         this.ctx.drawImage(background, 0, 0);
 
