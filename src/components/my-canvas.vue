@@ -7,7 +7,7 @@
 </template>
 
 <script>
-// import Background from '../assets/'
+// import giyeok from '../assets/alphabets/consonants'
 export default {
 	// Clear
     // Erase
@@ -19,6 +19,8 @@ export default {
             ctx: null,
             painting: false,
             vueCanvas: null,
+            consonants: this.importAll(require.context('../assets/alphabets/consonants/', false, /\.(png|jpe?g|svg)$/)),
+            vowels: this.importAll(require.context('../assets/alphabets/vowels/', false, /\.(png|jpe?g|svg)$/)),
         };
     },
 
@@ -53,12 +55,6 @@ export default {
         }
     },
 
-    // beforeMount(){
-    //     const images = this.importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/));
-    //     console.log('beforeMount')
-    //     console.log(images)
-    // },
-
     mounted() {
         this.canvas = document.querySelector("#canvas");
         this.ctx = this.canvas.getContext("2d");
@@ -66,13 +62,8 @@ export default {
         this.canvas.height = 400;
         this.canvas.width = 1000;
 
-        const images = this.importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/));
-        
-        console.log(images[0].default)
-
-        // console.log(Background)
         const background = new Image()
-        background.src = images[0].default
+        background.src = this.consonants[0].default
 
         background.onload = () => {
             this.ctx.drawImage(background, 0 ,0)
