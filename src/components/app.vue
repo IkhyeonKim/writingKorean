@@ -1,15 +1,21 @@
 <template>
-    <div class="container">
-        <img :src="logo" alt="logo">
-        <my-canvas :consonants=consonants
-        :vowels=vowels
-        ></my-canvas>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                <img :src="logo" alt="logo">
+            </div>
+        </div>
+        <div class="content">
+            <alphabets :consonants=consonants :vowels=vowels></alphabets>
+            <my-canvas :consonants=consonants :vowels=vowels></my-canvas>
+        </div>
     </div>
   
 </template>
 
 <script>
 import myCanvas from './my-canvas.vue'
+import alphabets from './alphabets.vue'
 import Logo from '../assets/logo.svg'
 
 export default {
@@ -23,7 +29,8 @@ export default {
     },
 
     components: {
-        myCanvas
+        myCanvas,
+        alphabets
     },
 
     methods: {

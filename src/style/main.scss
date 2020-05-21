@@ -1,10 +1,79 @@
-html body {
+html {
+    box-sizing: border-box;
+}
+
+body {
+    box-sizing: inherit;
     margin: 0;
     padding: 0;
+    font-size: 14px;
+    font-family: Helvetica Neue,Helvetica,Malgun Gothic,-apple-system, Dotum,sans-serif;
+    line-height: 1.5;
+}
+
+.wrapper {
+    overflow: hidden;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.header {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content {
+    display: flex;
+    max-width: 1140px;
+    margin-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.canvas {
+    display: inline-block;
+    font-size: 0;
+    text-align: center;
+    margin: 8px;
+}
+
+.alphabets {
+    display: inline-block;
+    max-width: 350px;
+    font-size: 0;
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        border: 1px solid #808080;
+        border-radius: 4px;
+        text-align: center;
+        margin: 8px;
+        padding: 4px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .vowels {
+        li {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
 }
 
 #canvas {
-    position: fixed;
     border: 2px solid;
     // width: 800px;
     // height: 500px;

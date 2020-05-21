@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <div class="canvas">
         <canvas
             @mousedown="startPainting"
             @mouseup="finishedPainting"
@@ -22,7 +22,7 @@ export default {
             canvas: null,
             ctx: null,
             painting: false,
-            vueCanvas: null
+            vueCanvas: null,
         };
     },
 
@@ -45,11 +45,15 @@ export default {
             this.ctx.lineWidth = 5;
             this.ctx.lineCap = "round";
 
-            this.ctx.lineTo(e.clientX, e.clientY - this.canvas.offsetTop);
+            this.ctx.lineTo(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
             this.ctx.stroke();
 
             this.ctx.beginPath();
-            this.ctx.moveTo(e.clientX, e.clientY - this.canvas.offsetTop);
+            this.ctx.moveTo(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
+        },
+
+        importAll(r) {
+            return r.keys().map(r);
         }
     },
 
@@ -58,16 +62,16 @@ export default {
         this.ctx = this.canvas.getContext("2d");
 
         this.canvas.height = 400;
-        this.canvas.width = 1000;
+        this.canvas.width = 600;
 
-        const background = new Image();
-        background.src = this.consonants[0].default;
+        // const background = new Image();
+        // background.src = this.consonants[0].default;
 
-        background.onload = () => {
-            this.ctx.drawImage(background, 0, 0);
-        };
+        // background.onload = () => {
+        //     this.ctx.drawImage(background, 0, 0);
+        // };
 
-        this.ctx.drawImage(background, 0, 0);
+        // this.ctx.drawImage(background, 0, 0);
 
         this.vueCanvas = this.ctx;
     }
