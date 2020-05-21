@@ -6,14 +6,15 @@
             @mouseup="finishedPainting"
             @mousemove="draw"
             id="canvas"
+            :style="{'background-image': `url(${currentAlphabet})` }"
         ></canvas>
     </div>
 </template>
 
 <script>
 export default {
-    // Clear
-    // Erase
+    // Todo: Clear
+    // Todo: Erase
     props: ["alphabet"],
 
     data() {
@@ -21,28 +22,12 @@ export default {
             canvas: null,
             ctx: null,
             painting: false,
-            vueCanvas: null
+            vueCanvas: null,
         };
     },
     computed: {
         currentAlphabet() {
-
-            this.changeBackground()
-            
             return this.alphabet
-            // const background = new Image();
-            
-            // background.src = this.imgPath + this.alphabet + ".svg";
-            
-            // console.log(this.alphabet);
-
-            // background.onload = () => {
-            //     this.ctx.drawImage(background, 0, 0);
-            // };
-
-            // this.ctx.drawImage(background, 0, 0);
-
-            // this.vueCanvas = this.ctx;
         }
     },
     methods: {
@@ -91,15 +76,6 @@ export default {
 
         this.canvas.height = 400;
         this.canvas.width = 600;
-
-        const background = new Image();
-        background.src = this.alphabet;
-
-        background.onload = () => {
-            this.ctx.drawImage(background, 0, 0);
-        };
-
-        // this.ctx.drawImage(background, 0, 0);
 
         this.vueCanvas = this.ctx;
     },
