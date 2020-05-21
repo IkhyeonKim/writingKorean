@@ -1,8 +1,8 @@
 <template>
     <ul :class="this.isVowels ? 'vowels' : ''">
-        <li v-for="(alphabet, index) in this.alphabets" :key="index">
+        <li v-for="(alphabet, index) in this.alphabets" :key="index" @click="buttonClicked(alphabet.default)">
             <div>
-                <img :src="alphabet.default" alt />
+                <img :src="alphabet.default" alt="" />
             </div>
         </li>
     </ul>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-    props: ['alphabets', 'isVowels']
+    props: ['alphabets', 'isVowels' ],
+    methods: {
+        buttonClicked(alphabetPath) {
+            this.$emit('button-clicked', alphabetPath, this.isVowels)
+        }
+    }
 };
 </script>
 

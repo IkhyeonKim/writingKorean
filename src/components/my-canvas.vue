@@ -14,18 +14,37 @@
 export default {
     // Clear
     // Erase
-    props: ["consonants", "vowels"],
+    props: ["alphabet"],
 
     data() {
         return {
-            message: "Hello world!",
             canvas: null,
             ctx: null,
             painting: false,
-            vueCanvas: null,
+            vueCanvas: null
         };
     },
+    computed: {
+        currentAlphabet() {
 
+            this.changeBackground()
+            
+            return this.alphabet
+            // const background = new Image();
+            
+            // background.src = this.imgPath + this.alphabet + ".svg";
+            
+            // console.log(this.alphabet);
+
+            // background.onload = () => {
+            //     this.ctx.drawImage(background, 0, 0);
+            // };
+
+            // this.ctx.drawImage(background, 0, 0);
+
+            // this.vueCanvas = this.ctx;
+        }
+    },
     methods: {
         startPainting(e) {
             this.painting = true;
@@ -45,15 +64,24 @@ export default {
             this.ctx.lineWidth = 5;
             this.ctx.lineCap = "round";
 
-            this.ctx.lineTo(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
+            this.ctx.lineTo(
+                e.clientX - this.canvas.offsetLeft,
+                e.clientY - this.canvas.offsetTop
+            );
             this.ctx.stroke();
 
             this.ctx.beginPath();
-            this.ctx.moveTo(e.clientX - this.canvas.offsetLeft, e.clientY - this.canvas.offsetTop);
+            this.ctx.moveTo(
+                e.clientX - this.canvas.offsetLeft,
+                e.clientY - this.canvas.offsetTop
+            );
         },
 
-        importAll(r) {
-            return r.keys().map(r);
+        changeBackground() {
+            const background = new Image();
+            background.src = currentAlphabet()
+
+            this.ctx.drawImage(background, 0, 0)
         }
     },
 
@@ -64,16 +92,20 @@ export default {
         this.canvas.height = 400;
         this.canvas.width = 600;
 
-        // const background = new Image();
-        // background.src = this.consonants[0].default;
+        const background = new Image();
+        background.src = this.alphabet;
 
-        // background.onload = () => {
-        //     this.ctx.drawImage(background, 0, 0);
-        // };
+        background.onload = () => {
+            this.ctx.drawImage(background, 0, 0);
+        };
 
         // this.ctx.drawImage(background, 0, 0);
 
         this.vueCanvas = this.ctx;
+    },
+
+    beforeUpdate() {
+        console.log('beforeUpdate')
     }
 };
 </script>
