@@ -22,21 +22,35 @@ export default {
         return {
             consonants: this.importAll(
                 require.context(
-                    "../assets/alphabets/consonants/",
+                    "../assets/alphabets/black/consonants/",
                     false,
                     /\.(png|jpe?g|svg)$/
                 )
             ),
             vowels: this.importAll(
                 require.context(
-                    "../assets/alphabets/vowels/",
+                    "../assets/alphabets/black/vowels/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
+            consonantsGray: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/consonants/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
+            vowelsGray: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/vowels/",
                     false,
                     /\.(png|jpe?g|svg)$/
                 )
             ),
             logo: Logo,
             currentAlphabet: 'giyeok',
-            currentAlphabetURL: '/src/assets/alphabets/consonants/giyeok.svg '
+            currentAlphabetURL: 'consonants/giyeok.svg '
         };
     },
 
@@ -56,12 +70,13 @@ export default {
         },
 
         updateAlphabet(alphabetPath, isVowels){
-            const startPath = isVowels ? 29 : 33;
+            const startPath = 28;
 
-            const newAlphabet = alphabetPath.substring(startPath, alphabetPath.length - 4)
+            const newAlphabet = alphabetPath.substring(startPath)
             
-            this.currentAlphabet = newAlphabet
-            this.currentAlphabetURL = alphabetPath
+            console.log(alphabetPath, newAlphabet)
+            // this.currentAlphabet = newAlphabet
+            this.currentAlphabetURL = newAlphabet
             // updateCanvas()
         }
     }

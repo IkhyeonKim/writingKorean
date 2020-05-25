@@ -6,7 +6,7 @@
             @mouseup="finishedPainting"
             @mousemove="draw"
             id="canvas"
-            :style="{'background-image': `url(${currentAlphabet})` }"
+            :style="{'background-image': `url(${alphabetPath}${currentAlphabet})` }"
         ></canvas>
     </div>
 </template>
@@ -15,10 +15,12 @@
 export default {
     // Todo: Clear
     // Todo: Erase
+    // Todo: 글씨 색, 스타일 추가
     props: ["alphabet"],
 
     data() {
         return {
+            alphabetPath: '/src/assets/alphabets/gray/',
             canvas: null,
             ctx: null,
             painting: false,
