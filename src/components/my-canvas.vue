@@ -8,6 +8,7 @@
             id="canvas"
             :style="{'background-image': `url(${alphabetPath}${currentAlphabet})` }"
         ></canvas>
+        <button @click="clearCanvas">Clear</button>
     </div>
 </template>
 
@@ -69,6 +70,9 @@ export default {
             background.src = currentAlphabet()
 
             this.ctx.drawImage(background, 0, 0)
+        },
+        clearCanvas() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         }
     },
 
