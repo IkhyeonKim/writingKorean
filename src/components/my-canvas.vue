@@ -9,6 +9,9 @@
             :style="{'background-image': `url(${alphabetPath}${currentAlphabet})` }"
         ></canvas>
         <button @click="clearCanvas">Clear</button>
+        <input v-model="eraseMode" type="checkbox" name="erase" />
+        <span> {{ eraseMode }} </span>
+        <label for="erase">Erase</label>
     </div>
 </template>
 
@@ -21,37 +24,41 @@ export default {
 
     data() {
         return {
-            alphabetPath: '/src/assets/alphabets/gray/',
+            alphabetPath: "/src/assets/alphabets/gray/",
             canvas: null,
             ctx: null,
             painting: false,
             vueCanvas: null,
+            eraseMode: false
         };
     },
     computed: {
         currentAlphabet() {
-            return this.alphabet
-        }
+            return this.alphabet;
+        },
     },
     methods: {
         startPainting(e) {
             this.painting = true;
-            console.log("Started painting");
             this.draw(e);
         },
 
         finishedPainting() {
             this.painting = false;
-            console.log("Finished painting");
             this.ctx.beginPath();
         },
 
         draw(e) {
             if (!this.painting) return;
 
-            this.ctx.lineWidth = 5;
             this.ctx.lineCap = "round";
 
+            if (this.eraseMode === false) {
+                this.ctx.lineWidth = 5;
+            }else{
+                this.ctx.lineWidth = 20;
+            }
+            
             this.ctx.lineTo(
                 e.clientX - this.canvas.offsetLeft,
                 e.clientY - this.canvas.offsetTop
@@ -67,13 +74,15 @@ export default {
 
         changeBackground() {
             const background = new Image();
-            background.src = currentAlphabet()
+            background.src = currentAlphabet();
 
-            this.ctx.drawImage(background, 0, 0)
+            this.ctx.drawImage(background, 0, 0);
         },
+
         clearCanvas() {
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        }
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        },
+
     },
 
     mounted() {
@@ -87,7 +96,11 @@ export default {
     },
 
     beforeUpdate() {
-        console.log('beforeUpdate')
+        if(this.eraseMode === false){        
+            this.ctx.globalCompositeOperation = 'source-over'
+        }else{
+            this.ctx.globalCompositeOperation = 'destination-out'
+        }
     }
 };
 </script>
