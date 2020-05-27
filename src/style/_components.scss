@@ -1,0 +1,101 @@
+
+.checkbox {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 16px;
+
+    input[type=checkbox] {
+        display: none;
+
+        &:checked {
+            & ~ .checkmark {
+                &:after {
+                    display: block;
+                }
+            }
+        }
+    }
+
+
+}
+
+.checkmark {
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    border-radius: 3px;
+    
+    &:hover {
+        background-color: #dfdfdf;
+    }
+
+    &:after {
+        display: none;
+        content: "";
+        position: absolute;
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid #3c3c3c;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+.checkbox + label {
+    display: inline-block;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+    position: relative;
+
+}
+
+.checkbox + label:active,
+.checkbox:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.checkbox:checked + label {
+	background-color: #eeeeee;
+	border: 1px solid #c1c1c1;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #a5a5a5;
+    
+    &:after {
+        content: '\2714';
+        font-size: 14px;
+        position: absolute;
+        top: 0px;
+        left: 3px;
+        color: #a5a5a5;
+    }
+}
+
+
+.button {
+    cursor: pointer;
+    outline: none;
+    background: none;
+    border: 1px solid #999;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    vertical-align: middle;
+
+    &:hover,
+    &:active {
+        background: #e6e6e6;
+    }
+}

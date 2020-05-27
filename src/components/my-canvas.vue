@@ -1,6 +1,16 @@
 
 <template>
     <div class="canvas">
+        <div>
+            <button @click="clearCanvas" class="button">Clear</button>
+            <div class="d-inline-block vertical-align-middle">
+                <label for="erase" class="checkbox">
+                    <input v-model="eraseMode" type="checkbox" id="erase"/>    
+                    <span class="vertical-align-middle">Erase</span>    
+                    <span class="checkmark vertical-align-middle"></span>
+                </label>
+            </div>
+        </div>
         <canvas
             @mousedown="startPainting"
             @mouseup="finishedPainting"
@@ -8,17 +18,11 @@
             id="canvas"
             :style="{'background-image': `url(${alphabetPath}${currentAlphabet})` }"
         ></canvas>
-        <button @click="clearCanvas">Clear</button>
-        <input v-model="eraseMode" type="checkbox" name="erase" />
-        <span> {{ eraseMode }} </span>
-        <label for="erase">Erase</label>
     </div>
 </template>
 
 <script>
 export default {
-    // Todo: Clear
-    // Todo: Erase
     // Todo: 글씨 색, 스타일 추가
     props: ["alphabet"],
 

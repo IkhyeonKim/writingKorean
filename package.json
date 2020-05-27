@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "build": "rm -rf dist && webpack --mode development --config webpack.server.config.js && webpack --mode development",
-    "start": "nodemon ./dist/server.js 8080"
+    "start": "nodemon ./dist/server.js 8080",
+    "start:dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "style-loader": "^1.2.1",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
+    "webpack-dev-server": "^3.11.0",
     "webpack-node-externals": "^1.7.2"
   }
 }

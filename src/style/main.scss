@@ -1,15 +1,6 @@
-html {
-    box-sizing: border-box;
-}
-
-body {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    font-family: Helvetica Neue,Helvetica,Malgun Gothic,-apple-system, Dotum,sans-serif;
-    line-height: 1.5;
-}
+@import "./abstract";
+@import "./helper";
+@import "./components";
 
 .wrapper {
     overflow: hidden;
@@ -32,12 +23,6 @@ body {
     
 }
 
-.canvas {
-    display: inline-block;
-    font-size: 0;
-    text-align: center;
-    margin: 8px;
-}
 
 .alphabets {
     display: inline-block;
@@ -73,11 +58,24 @@ body {
     }
 }
 
+
+.canvas {
+    display: inline-block;
+    text-align: center;
+    margin: 8px;
+    font-size: 0;
+    
+    &__buttons {
+        font-size: 12px;
+    }
+}
+
 #canvas {
     border: 2px solid;
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
+    margin-top: 8px;
     // width: 800px;
     // height: 500px;
 }
