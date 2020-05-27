@@ -58,10 +58,6 @@ export default {
         };
     },
 
-    mounted() {
-
-    },
-
     components: {
         myCanvas,
         alphabets
@@ -73,25 +69,14 @@ export default {
             return r.keys().map(r);
         },
 
-        updateAlphabet(alphabetPath, isVowels){
+        updateAlphabet(alphabetPath, isVowels, alphabetKey){
             const startPath = 28;
 
             const newAlphabet = alphabetPath.substring(startPath)
             
-            this.currentAlphabet = this.getAlphabetKey(alphabetPath, isVowels)
+            this.currentAlphabet = alphabetKey
             this.currentAlphabetURL = newAlphabet
-            // updateCanvas()
         },
-
-        getAlphabetKey(path, isVowels) {
-
-            const startPath = 28;
-            const consonantIndex = 'consonants/'.length
-            const vowelIndex = 'vowels/'.length
-            // const newAlphabet = path.substring(startPath, path.length - 4)
-
-            return path.substring(startPath + (isVowels === true ? vowelIndex : consonantIndex), path.length - 4)
-        }
     }
 };
 </script>

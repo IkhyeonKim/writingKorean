@@ -43,14 +43,13 @@ export default {
     },
 
     methods: {
-        getAlphabet(path, isVowels) {
-            this.$emit("update-alphabet", path, isVowels);
+        getAlphabet(path, isVowels, key) {
+            this.$emit("update-alphabet", path, isVowels, key);
         },
         getAlphabetKey(path, isVowels) {
             const startPath = 28;
             const consonantIndex = "consonants/".length;
             const vowelIndex = "vowels/".length;
-            // const newAlphabet = path.substring(startPath, path.length - 4)
 
             return path.substring(
                 startPath + (isVowels === true ? vowelIndex : consonantIndex),
