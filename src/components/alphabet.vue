@@ -1,19 +1,18 @@
 <template>
-    <ul :class="this.isVowels ? 'vowels' : ''">
-        <li v-for="(alphabet, index) in this.alphabets" :key="index" @click="buttonClicked(alphabet.default)">
-            <div>
-                <img :src="alphabet.default" alt="" />
-            </div>
-        </li>
-    </ul>
+    <li @click="buttonClicked(alphabet.default, $event)" :class="['alphabet', this.isActive === true ? 'active' : '' ]">
+        <img :src="alphabet.default" alt="" />
+    </li>
 </template>
 
 <script>
 export default {
-    props: ['alphabets', 'isVowels' ],
+    props: ["alphabet", "isVowels", "isActive"],
+
     methods: {
-        buttonClicked(alphabetPath) {
-            this.$emit('button-clicked', alphabetPath, this.isVowels)
+        buttonClicked(alphabetPath, event) {
+            console.log(event.path[1]);
+            
+            this.$emit("button-clicked", alphabetPath, this.isVowels);
         }
     }
 };

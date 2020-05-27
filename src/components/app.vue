@@ -6,7 +6,11 @@
             </div>
         </div>
         <div class="content">
-            <alphabets :consonants="consonants" :vowels="vowels" @update-alphabet="updateAlphabet"></alphabets>
+            <alphabets :consonants="consonants" 
+                :vowels="vowels"
+                @update-alphabet="updateAlphabet" 
+                :propsAlphabet="currentAlphabet">
+            </alphabets>
             <my-canvas :alphabet="currentAlphabetURL"></my-canvas>
         </div>
     </div>
@@ -55,7 +59,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.consonants);
+
     },
 
     components: {
@@ -74,10 +78,19 @@ export default {
 
             const newAlphabet = alphabetPath.substring(startPath)
             
-            console.log(alphabetPath, newAlphabet)
-            // this.currentAlphabet = newAlphabet
+            this.currentAlphabet = this.getAlphabetKey(alphabetPath, isVowels)
             this.currentAlphabetURL = newAlphabet
             // updateCanvas()
+        },
+
+        getAlphabetKey(path, isVowels) {
+
+            const startPath = 28;
+            const consonantIndex = 'consonants/'.length
+            const vowelIndex = 'vowels/'.length
+            // const newAlphabet = path.substring(startPath, path.length - 4)
+
+            return path.substring(startPath + (isVowels === true ? vowelIndex : consonantIndex), path.length - 4)
         }
     }
 };

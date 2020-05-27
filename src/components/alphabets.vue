@@ -1,8 +1,28 @@
 <template>
     <div class="alphabets">
-        <alphabet :isVowels="false" :alphabets="consonants" @button-clicked="getAlphabet"></alphabet>
+        <ul class>
+            <alphabet
+                v-for="(alphabet, index) in this.consonants"
+                :key="index"
+                :isVowels="false"
+                :alphabet="alphabet"
+                :alphabetKey="getAlphabetKey(alphabet.default, false)"
+                :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, false) ? true : false"
+                @button-clicked="getAlphabet"
+            ></alphabet>
+        </ul>
 
-        <alphabet :isVowels="true" :alphabets="vowels" @button-clicked="getAlphabet"></alphabet>
+        <ul class="vowels">
+            <alphabet
+                v-for="(alphabet, index) in this.vowels"
+                :key="index"
+                :isVowels="true"
+                :alphabet="alphabet"
+                :alphabetKey="getAlphabetKey(alphabet.default, true)"
+                :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, true) ? true : false"
+                @button-clicked="getAlphabet"
+            ></alphabet>
+        </ul>
     </div>
 </template>
 
@@ -10,15 +30,32 @@
 import Alphabet from "./alphabet.vue";
 
 export default {
-    props: ["consonants", "vowels"],
+    props: ["consonants", "vowels", "propsAlphabet"],
+
+    computed: {
+        getCurrentAlphabet() {
+            return this.propsAlphabet
+        }
+    },
 
     components: {
         alphabet: Alphabet
     },
 
     methods: {
-        getAlphabet(alphabetPath, isVowels) {
-            this.$emit('update-alphabet', alphabetPath, isVowels)
+        getAlphabet(path, isVowels) {
+            this.$emit("update-alphabet", path, isVowels);
+        },
+        getAlphabetKey(path, isVowels) {
+            const startPath = 28;
+            const consonantIndex = "consonants/".length;
+            const vowelIndex = "vowels/".length;
+            // const newAlphabet = path.substring(startPath, path.length - 4)
+
+            return path.substring(
+                startPath + (isVowels === true ? vowelIndex : consonantIndex),
+                path.length - 4
+            );
         }
     }
 };

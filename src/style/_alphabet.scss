@@ -1,0 +1,12 @@
+.alphabet {
+    cursor: pointer;
+
+    &.active {
+        background-color: #c9c9c9;
+    }
+
+    &:hover,
+    &:active {
+        background-color: #c9c9c9;
+    }
+}
