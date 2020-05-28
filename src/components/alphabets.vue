@@ -1,7 +1,7 @@
 <template>
     <div class="alphabets">
 
-        <div class="alphabets__collection">
+        <div class="collection">
             <ul :class="consonantClass">
                 <alphabet
                     v-for="(alphabet, index) in this.consonants"
@@ -14,10 +14,13 @@
                 ></alphabet>
             </ul>
 
-            <button @click="seeMore(false)" class="button alphabet-see-more-button" :class="{expand: isConsonantActive}">See more</button>
+            <button @click="seeMore(false)" 
+            class="button alphabet-see-more-button" 
+            :class="{expand: isConsonantActive}"> {{ isConsonantActive === true ? hideMessage : consonantMessage }} 
+            </button>
         </div>
 
-        <div class="alphabets__collection">
+        <div class="collection">
             <ul :class="vowelClass">
                 <alphabet
                     v-for="(alphabet, index) in this.vowels"
@@ -30,7 +33,10 @@
                 ></alphabet>
             </ul>
 
-            <button @click="seeMore(true)" class="button alphabet-see-more-button" :class="{expand: isVowelActive}">See more</button>
+            <button @click="seeMore(true)" 
+            class="button alphabet-see-more-button" 
+            :class="{expand: isVowelActive}">{{ isVowelActive === true ? hideMessage : vowelMessage }} 
+            </button>
         </div>
     </div>
 </template>
@@ -49,8 +55,11 @@ export default {
         return {
             consonantClass: 'hide-overflow',
             isConsonantActive: false,
+            consonantMessage: 'See all consonants',
             vowelClass: 'hide-overflow',
             isVowelActive: false,
+            vowelMessage: 'See all vowels',
+            hideMessage: 'Hide alphabets',
         }
     },
 

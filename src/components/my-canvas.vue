@@ -93,7 +93,7 @@ export default {
         this.canvas = document.querySelector("#canvas");
         this.ctx = this.canvas.getContext("2d");
 
-        this.canvas.height = 400;
+        this.canvas.height = 450;
         this.canvas.width = 600;
 
         this.vueCanvas = this.ctx;

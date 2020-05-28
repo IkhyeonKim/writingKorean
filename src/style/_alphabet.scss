@@ -1,29 +1,22 @@
-.alphabet {
-    cursor: pointer;
-
-    &.active {
-        background-color: #c9c9c9;
-    }
-
-    &:hover,
-    &:active {
-        background-color: #c9c9c9;
-    }
-}
-
 .alphabets {
     display: inline-block;
     max-width: 350px;
+    margin-top: 34px;
     // font-size: 0;
+
+    .collection + .collection {
+        margin-top: 16px;
+    }
 
     ul {
 
         list-style: none;
         padding: 0;
+        margin-top: 0;
         margin-bottom: 12px;
 
         &.hide-overflow {
-            max-height: 200px;
+            max-height: 170px;
         }
     }
 
@@ -36,17 +29,8 @@
         padding: 4px;
 
         img {
-            width: 60px;
-            height: 60px;
-        }
-    }
-
-    .vowels {
-        li {
-            img {
-                width: 70px;
-                height: 70px;
-            }
+            width: 44px;
+            height: 44px;
         }
     }
 }
@@ -58,6 +42,7 @@
     color: #333333;
     border: 1px solid #333333;
     padding: 10px 40px 10px 24px;
+    width: 210px;
 
     &::after {
         content: "";
@@ -80,5 +65,18 @@
             -ms-transform: rotate(225deg);
             transform: rotate(225deg);
         }
+    }
+}
+
+.alphabet {
+    cursor: pointer;
+
+    &.active {
+        background-color: #c9c9c9;
+    }
+
+    &:hover,
+    &:active {
+        background-color: #c9c9c9;
     }
 }
