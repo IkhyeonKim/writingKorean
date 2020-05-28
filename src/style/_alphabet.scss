@@ -17,12 +17,13 @@
     // font-size: 0;
 
     ul {
+
         list-style: none;
         padding: 0;
         margin-bottom: 12px;
 
         &.hide-overflow {
-            max-height: 220px;
+            max-height: 200px;
         }
     }
 
@@ -52,8 +53,32 @@
 
 .alphabet-see-more-button {
     display: block;
+    position: relative;
     margin: auto;
     color: #333333;
     border: 1px solid #333333;
-    padding: 10px 20px;
+    padding: 10px 40px 10px 24px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 22px;
+        top: 10px;
+        width: 8px;
+        height: 8px;
+        border: solid #333333;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    &.expand {
+        &::after {
+            top: 15px;
+            -webkit-transform: rotate(225deg);
+            -ms-transform: rotate(225deg);
+            transform: rotate(225deg);
+        }
+    }
 }

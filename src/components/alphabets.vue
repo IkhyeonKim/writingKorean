@@ -2,7 +2,7 @@
     <div class="alphabets">
 
         <div class="alphabets__collection">
-            <ul class="hide-overflow">
+            <ul :class="consonantClass">
                 <alphabet
                     v-for="(alphabet, index) in this.consonants"
                     :key="index"
@@ -14,11 +14,11 @@
                 ></alphabet>
             </ul>
 
-            <button class="button alphabet-see-more-button">See more</button>
+            <button @click="seeMore(false)" class="button alphabet-see-more-button" :class="{expand: isConsonantActive}">See more</button>
         </div>
 
         <div class="alphabets__collection">
-            <ul class="hide-overflow">
+            <ul :class="vowelClass">
                 <alphabet
                     v-for="(alphabet, index) in this.vowels"
                     :key="index"
@@ -30,7 +30,7 @@
                 ></alphabet>
             </ul>
 
-            <button class="button alphabet-see-more-button">See more</button>
+            <button @click="seeMore(true)" class="button alphabet-see-more-button" :class="{expand: isVowelActive}">See more</button>
         </div>
     </div>
 </template>
@@ -40,6 +40,19 @@ import Alphabet from "./alphabet.vue";
 
 export default {
     props: ["consonants", "vowels", "propsAlphabet"],
+    
+    components: {
+        alphabet: Alphabet
+    },
+
+    data() {
+        return {
+            consonantClass: 'hide-overflow',
+            isConsonantActive: false,
+            vowelClass: 'hide-overflow',
+            isVowelActive: false,
+        }
+    },
 
     computed: {
         getCurrentAlphabet() {
@@ -47,14 +60,12 @@ export default {
         }
     },
 
-    components: {
-        alphabet: Alphabet
-    },
-
     methods: {
+
         getAlphabet(path, isVowels, key) {
             this.$emit("update-alphabet", path, isVowels, key);
         },
+
         getAlphabetKey(path, isVowels) {
             const startPath = 28;
             const consonantIndex = "consonants/".length;
@@ -64,6 +75,20 @@ export default {
                 startPath + (isVowels === true ? vowelIndex : consonantIndex),
                 path.length - 4
             );
+        },
+
+        seeMore(isVowel) {
+
+            if(isVowel === false) {
+
+                this.consonantClass = this.consonantClass === 'hide-overflow' ? '' : 'hide-overflow'
+                this.isConsonantActive = !this.isConsonantActive
+
+                }else {
+
+                this.vowelClass = this.vowelClass === 'hide-overflow' ? '' : 'hide-overflow'
+                this.isVowelActive = !this.isVowelActive
+            }
         }
     }
 };
