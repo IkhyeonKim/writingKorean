@@ -16,10 +16,6 @@ app.get('/', (req, res) => {
     res.sendFile(HTML_FILE)
 })
 
-app.get('/alphabets', (req, res) => {
-    res.sendFile(ALPHABET_FILE + 'background.jpg')
-})
-
 app.listen(PORT, () => {
     console.log(`App is listening to ${PORT}`)
 })
