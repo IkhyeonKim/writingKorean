@@ -25,41 +25,6 @@
 }
 
 
-.alphabets {
-    display: inline-block;
-    max-width: 350px;
-    // font-size: 0;
-    
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        border: 1px solid #808080;
-        border-radius: 4px;
-        text-align: center;
-        margin: 8px;
-        padding: 4px;
-
-        img {
-            width: 60px;
-            height: 60px;
-        }
-    }
-
-    .vowels {
-        li {
-            img {
-                width: 70px;
-                height: 70px;
-            }
-        }
-    }
-}
-
-
 .canvas {
     display: inline-block;
     text-align: center;

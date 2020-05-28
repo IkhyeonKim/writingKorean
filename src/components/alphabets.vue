@@ -1,28 +1,37 @@
 <template>
     <div class="alphabets">
-        <ul class>
-            <alphabet
-                v-for="(alphabet, index) in this.consonants"
-                :key="index"
-                :isVowels="false"
-                :alphabet="alphabet"
-                :alphabetKey="getAlphabetKey(alphabet.default, false)"
-                :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, false) ? true : false"
-                @button-clicked="getAlphabet"
-            ></alphabet>
-        </ul>
 
-        <ul class="vowels">
-            <alphabet
-                v-for="(alphabet, index) in this.vowels"
-                :key="index"
-                :isVowels="true"
-                :alphabet="alphabet"
-                :alphabetKey="getAlphabetKey(alphabet.default, true)"
-                :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, true) ? true : false"
-                @button-clicked="getAlphabet"
-            ></alphabet>
-        </ul>
+        <div class="alphabets__collection">
+            <ul class="hide-overflow">
+                <alphabet
+                    v-for="(alphabet, index) in this.consonants"
+                    :key="index"
+                    :isVowels="false"
+                    :alphabet="alphabet"
+                    :alphabetKey="getAlphabetKey(alphabet.default, false)"
+                    :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, false) ? true : false"
+                    @button-clicked="getAlphabet"
+                ></alphabet>
+            </ul>
+
+            <button class="button alphabet-see-more-button">See more</button>
+        </div>
+
+        <div class="alphabets__collection">
+            <ul class="hide-overflow">
+                <alphabet
+                    v-for="(alphabet, index) in this.vowels"
+                    :key="index"
+                    :isVowels="true"
+                    :alphabet="alphabet"
+                    :alphabetKey="getAlphabetKey(alphabet.default, true)"
+                    :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, true) ? true : false"
+                    @button-clicked="getAlphabet"
+                ></alphabet>
+            </ul>
+
+            <button class="button alphabet-see-more-button">See more</button>
+        </div>
     </div>
 </template>
 

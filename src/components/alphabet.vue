@@ -1,5 +1,4 @@
 <template>
-
     <li @click="buttonClicked(alphabet.default, alphabetKey)" :class="['alphabet', isActive === true ? 'active' : '' ]">
         <img :src="alphabet.default" alt="" />
     </li>

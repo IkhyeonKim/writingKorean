@@ -10,3 +10,50 @@
         background-color: #c9c9c9;
     }
 }
+
+.alphabets {
+    display: inline-block;
+    max-width: 350px;
+    // font-size: 0;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 12px;
+
+        &.hide-overflow {
+            max-height: 220px;
+        }
+    }
+
+    li {
+        display: inline-block;
+        border: 1px solid #808080;
+        border-radius: 4px;
+        text-align: center;
+        margin: 8px;
+        padding: 4px;
+
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .vowels {
+        li {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    }
+}
+
+.alphabet-see-more-button {
+    display: block;
+    margin: auto;
+    color: #333333;
+    border: 1px solid #333333;
+    padding: 10px 20px;
+}
