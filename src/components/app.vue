@@ -7,13 +7,13 @@
         </div>
         <div class="content">
             <ul class="tab-title">
-                <li class="active">Writing Korean</li>
-                <li>Organazing Korean alphabet</li>
+                <li @click="tabClick('writing')" :class="activeTab === 'writing' ? 'active' : ''">Writing Korean</li>
+                <li @click="tabClick('organazing')" :class="activeTab === 'organazing' ? 'active' : ''">Organazing Korean alphabet</li>
             </ul>
 
             <ul class="tab-contents">
-                <writing></writing>
-                <board></board>
+                <writing v-if="activeTab === 'writing'"></writing>
+                <board v-if="activeTab === 'organazing'"></board>
             </ul>
         </div>
     </div>
@@ -27,12 +27,18 @@ import Logo from "../assets/logo.svg";
 export default {
     data() {
         return {
-            logo: Logo
+            logo: Logo,
+            activeTab: 'writing',
         };
     },
     components: {
         writing,
         board
+    },
+    methods: {
+        tabClick(tabName) {
+            this.activeTab = tabName
+        }
     }
 };
 </script>
