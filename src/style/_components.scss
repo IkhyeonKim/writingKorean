@@ -101,9 +101,33 @@
 }
 
 .tab-title {
+    display: flex;
+    border-top: 2px solid #666;
+    border-left: 1px solid #ccc;
+    
+    > li {
+        cursor: pointer;
+        display: inline-block;
+        padding: 15px 20px 14px;
+        width: 50%;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        background-color: #fafafa;
+
+        &.active {
+            border-bottom: 1px solid #ffffff;
+            background-color: #ffffff;
+        }
+
+        &:hover {
+            background-color: #ffffff;
+        }
+    }
 
 }
 
 .tab-contents {
     text-align: center;
+    margin-top: 20px;
 }

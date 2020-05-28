@@ -1,16 +1,6 @@
 
 <template>
     <div class="canvas">
-        <div>
-            <button @click="clearCanvas" class="button">Clear</button>
-            <div class="d-inline-block vertical-align-middle">
-                <label for="erase" class="checkbox">
-                    <input v-model="eraseMode" type="checkbox" id="erase"/>    
-                    <span class="vertical-align-middle">Erase</span>    
-                    <span class="checkmark vertical-align-middle"></span>
-                </label>
-            </div>
-        </div>
         <canvas
             @mousedown="startPainting"
             @mouseup="finishedPainting"
@@ -18,6 +8,16 @@
             id="canvas"
             :style="{'background-image': `url(${alphabetPath}${currentAlphabet})` }"
         ></canvas>
+        <div>
+            <button @click="clearCanvas" class="button">Clear</button>
+            <div class="d-inline-block vertical-align-middle">
+                <label for="erase" class="checkbox">
+                    <input v-model="eraseMode" type="checkbox" id="erase" />
+                    <span class="vertical-align-middle">Erase</span>
+                    <span class="checkmark vertical-align-middle"></span>
+                </label>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
     computed: {
         currentAlphabet() {
             return this.alphabet;
-        },
+        }
     },
     methods: {
         startPainting(e) {
@@ -59,10 +59,10 @@ export default {
 
             if (this.eraseMode === false) {
                 this.ctx.lineWidth = 5;
-            }else{
+            } else {
                 this.ctx.lineWidth = 20;
             }
-            
+
             this.ctx.lineTo(
                 e.clientX - this.canvas.offsetLeft,
                 e.clientY - this.canvas.offsetTop
@@ -85,8 +85,7 @@ export default {
 
         clearCanvas() {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        },
-
+        }
     },
 
     mounted() {
@@ -100,10 +99,10 @@ export default {
     },
 
     beforeUpdate() {
-        if(this.eraseMode === false){        
-            this.ctx.globalCompositeOperation = 'source-over'
-        }else{
-            this.ctx.globalCompositeOperation = 'destination-out'
+        if (this.eraseMode === false) {
+            this.ctx.globalCompositeOperation = "source-over";
+        } else {
+            this.ctx.globalCompositeOperation = "destination-out";
         }
     }
 };

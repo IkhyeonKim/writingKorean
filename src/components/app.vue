@@ -7,7 +7,7 @@
         </div>
         <div class="content">
             <ul class="tab-title">
-                <li>Writing Korean</li>
+                <li class="active">Writing Korean</li>
                 <li>Organazing Korean alphabet</li>
             </ul>
 
@@ -27,8 +27,8 @@ import Logo from "../assets/logo.svg";
 export default {
     data() {
         return {
-            logo: Logo,
-        }
+            logo: Logo
+        };
     },
     components: {
         writing,

@@ -29,7 +29,6 @@
     display: inline-block;
     text-align: center;
     vertical-align: top;
-    margin: 8px;
     font-size: 0;
 
     &__buttons {
@@ -42,7 +41,5 @@
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 8px;
-    // width: 800px;
-    // height: 500px;
+    margin: 8px 0 8px 16px;
 }
