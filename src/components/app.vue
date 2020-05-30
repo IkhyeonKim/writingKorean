@@ -14,11 +14,11 @@
             <ul class="tab-contents">
                 <writing v-if="activeTab === 'writing'"
                     :consonants="consonants"
-                    :vowels="vowels"
+                    :vowels="allVowels"
                 ></writing>
                 <board v-if="activeTab === 'organazing'"
-                    :consonants="consonants"
-                    :vowels="vowels"
+                    :consonants="basicConsonants"
+                    :vowels="basicVowels"
                 ></board>
             </ul>
         </div>
@@ -63,12 +63,49 @@ export default {
                     /\.(png|jpe?g|svg)$/
                 )
             ),
+            basicConsonants: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/basic/consonants/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            basicVowels: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/basic/vowels/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            combinedConsonants: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/combined/consonants/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            combinedVowels: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/combined/vowels/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            allVowels: null,
+            allConsonants: null
         };
     },
+
+    mounted() {
+        this.allVowels = this.basicVowels.concat(this.combinedVowels)
+        this.allConsonants = this.basicConsonants.concat(this.combinedConsonants)        
+    },
+
     components: {
         writing,
         board
     },
+
     methods: {
         tabClick(tabName) {
             this.activeTab = tabName
