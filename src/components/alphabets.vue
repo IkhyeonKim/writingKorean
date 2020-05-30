@@ -45,7 +45,7 @@
 import Alphabet from "./alphabet.vue";
 
 export default {
-    props: ["consonants", "vowels", "propsAlphabet"],
+    props: ["consonants", "vowels", "propsAlphabet", "isWriting"],
     
     components: {
         alphabet: Alphabet

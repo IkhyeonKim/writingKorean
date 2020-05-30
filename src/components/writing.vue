@@ -1,9 +1,10 @@
 <template>
     <li>
         <alphabets
-            :consonants="consonants"
-            :vowels="vowels"
             @update-alphabet="updateAlphabet"
+            :isWriting="true"
+            :consonants="this.consonants"
+            :vowels="this.vowels"
             :propsAlphabet="currentAlphabet"
         ></alphabets>
         <my-canvas :alphabet="currentAlphabetURL"></my-canvas>
@@ -15,36 +16,9 @@ import myCanvas from "./my-canvas.vue";
 import alphabets from "./alphabets.vue";
 
 export default {
+    props: ["consonants", "vowels"],
     data() {
         return {
-            consonants: this.importAll(
-                require.context(
-                    "../assets/alphabets/black/consonants/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            vowels: this.importAll(
-                require.context(
-                    "../assets/alphabets/black/vowels/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            consonantsGray: this.importAll(
-                require.context(
-                    "../assets/alphabets/gray/consonants/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            vowelsGray: this.importAll(
-                require.context(
-                    "../assets/alphabets/gray/vowels/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
             currentAlphabet: "giyeok",
             currentAlphabetURL: "consonants/giyeok.svg "
         };

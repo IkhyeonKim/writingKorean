@@ -12,8 +12,14 @@
             </ul>
 
             <ul class="tab-contents">
-                <writing v-if="activeTab === 'writing'"></writing>
-                <board v-if="activeTab === 'organazing'"></board>
+                <writing v-if="activeTab === 'writing'"
+                    :consonants="consonants"
+                    :vowels="vowels"
+                ></writing>
+                <board v-if="activeTab === 'organazing'"
+                    :consonants="consonants"
+                    :vowels="vowels"
+                ></board>
             </ul>
         </div>
     </div>
@@ -29,6 +35,34 @@ export default {
         return {
             logo: Logo,
             activeTab: 'writing',
+            consonants: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/consonants/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
+            vowels: this.importAll(
+                require.context(
+                    "../assets/alphabets/black/vowels/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
+            consonantsGray: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/consonants/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
+            vowelsGray: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/vowels/",
+                    false,
+                    /\.(png|jpe?g|svg)$/
+                )
+            ),
         };
     },
     components: {
@@ -38,7 +72,11 @@ export default {
     methods: {
         tabClick(tabName) {
             this.activeTab = tabName
-        }
+        },
+        importAll(r) {
+            console.log(r.keys().map(r))
+            return r.keys().map(r);
+        },
     }
 };
 </script>
