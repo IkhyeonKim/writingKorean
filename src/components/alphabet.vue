@@ -1,6 +1,8 @@
 <template>
     <li @click="buttonClicked(alphabet.default, alphabetKey)" :class="['alphabet', isActive === true ? 'active' : '' ]">
         <img :draggable="draggable"
+        @dragstart="dragStart"
+        @dragover.stop
          :src="alphabet.default" alt="" 
          :id="alphabetKey" />
     </li>
@@ -14,8 +16,11 @@ export default {
         buttonClicked(path, key) {
             this.$emit("button-clicked", path, this.isVowels, key);
         },
-        drop() {
 
+        dragStart(e) {
+            const target = e.target
+            console.log(target, target.dataset.key)
+            e.dataTransfer.setData('alphabet_id', target.id)
         },
     }
 };

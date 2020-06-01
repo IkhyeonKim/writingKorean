@@ -124,7 +124,7 @@ export default {
             this.activeTab = tabName;
         },
         importAll(r) {
-            console.log(r.keys().map(r));
+            // console.log(r.keys().map(r));
             return r.keys().map(r);
         }
     }
