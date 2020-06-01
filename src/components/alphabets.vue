@@ -76,14 +76,18 @@ export default {
         },
 
         getAlphabetKey(path, isVowels) {
-            const startPath = 28;
-            const consonantIndex = "consonants/".length;
-            const vowelIndex = "vowels/".length;
 
-            return path.substring(
-                startPath + (isVowels === true ? vowelIndex : consonantIndex),
-                path.length - 4
-            );
+            const startPath = 34;
+            let startIndex;
+
+            if(isVowels === false){
+                startIndex = "consonants/".length;
+
+            }else {
+                startIndex = "vowels/".length;
+            }
+
+            return path.substring( startPath + startIndex, path.length - 4);
         },
 
         seeMore(isVowel) {

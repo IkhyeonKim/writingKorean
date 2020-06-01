@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             currentAlphabet: "giyeok",
-            currentAlphabetURL: "consonants/giyeok.svg "
+            currentAlphabetURL: "/basic/consonants/giyeok.svg "
         };
     },
 

@@ -7,16 +7,24 @@
         </div>
         <div class="content">
             <ul class="tab-title">
-                <li @click="tabClick('writing')" :class="activeTab === 'writing' ? 'active' : ''">Writing Korean</li>
-                <li @click="tabClick('organazing')" :class="activeTab === 'organazing' ? 'active' : ''">Organazing Korean alphabet</li>
+                <li
+                    @click="tabClick('writing')"
+                    :class="activeTab === 'writing' ? 'active' : ''"
+                >Writing Korean</li>
+                <li
+                    @click="tabClick('organazing')"
+                    :class="activeTab === 'organazing' ? 'active' : ''"
+                >Organazing Korean alphabet</li>
             </ul>
 
             <ul class="tab-contents">
-                <writing v-if="activeTab === 'writing'"
-                    :consonants="consonants"
+                <writing
+                    v-if="activeTab === 'writing'"
+                    :consonants="allConsonants"
                     :vowels="allVowels"
                 ></writing>
-                <board v-if="activeTab === 'organazing'"
+                <board
+                    v-if="activeTab === 'organazing'"
                     :consonants="basicConsonants"
                     :vowels="basicVowels"
                 ></board>
@@ -34,35 +42,11 @@ export default {
     data() {
         return {
             logo: Logo,
-            activeTab: 'writing',
-            consonants: this.importAll(
-                require.context(
-                    "../assets/alphabets/black/consonants/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            vowels: this.importAll(
-                require.context(
-                    "../assets/alphabets/black/vowels/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            consonantsGray: this.importAll(
-                require.context(
-                    "../assets/alphabets/gray/consonants/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
-            vowelsGray: this.importAll(
-                require.context(
-                    "../assets/alphabets/gray/vowels/",
-                    false,
-                    /\.(png|jpe?g|svg)$/
-                )
-            ),
+            activeTab: "writing",
+            allConsonants: null,
+            allVowels: null,
+            allGrayConsonants: null,
+            allGrayVowels: null,
             basicConsonants: this.importAll(
                 require.context(
                     "../assets/alphabets/black/basic/consonants/",
@@ -91,14 +75,43 @@ export default {
                     /\.svg$/
                 )
             ),
-            allVowels: null,
-            allConsonants: null
+            basicGrayConsonants: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/basic/consonants/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            basicGrayVowels: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/basic/vowels/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            combinedGrayConsonants: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/combined/consonants/",
+                    false,
+                    /\.svg$/
+                )
+            ),
+            combinedGrayVowels: this.importAll(
+                require.context(
+                    "../assets/alphabets/gray/combined/vowels/",
+                    false,
+                    /\.svg$/
+                )
+            ),
         };
     },
 
     mounted() {
-        this.allVowels = this.basicVowels.concat(this.combinedVowels)
-        this.allConsonants = this.basicConsonants.concat(this.combinedConsonants)        
+        this.allVowels = this.basicVowels.concat(this.combinedVowels);
+        this.allConsonants = this.basicConsonants.concat(this.combinedConsonants);
+
+        this.allGrayVowels = this.basicGrayVowels.concat(this.combinedGrayVowels);
+        this.allGrayConsonants = this.basicGrayConsonants.concat(this.combinedGrayConsonants);
     },
 
     components: {
@@ -108,12 +121,12 @@ export default {
 
     methods: {
         tabClick(tabName) {
-            this.activeTab = tabName
+            this.activeTab = tabName;
         },
         importAll(r) {
-            console.log(r.keys().map(r))
+            console.log(r.keys().map(r));
             return r.keys().map(r);
-        },
+        }
     }
 };
 </script>
