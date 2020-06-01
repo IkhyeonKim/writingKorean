@@ -10,6 +10,7 @@
                     :alphabet="alphabet"
                     :alphabetKey="getAlphabetKey(alphabet.default, false)"
                     :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, false) ? true : false"
+                    :draggable="draggable"
                     @button-clicked="getAlphabet"
                 ></alphabet>
             </ul>
@@ -29,6 +30,7 @@
                     :alphabet="alphabet"
                     :alphabetKey="getAlphabetKey(alphabet.default, true)"
                     :isActive="getCurrentAlphabet === getAlphabetKey(alphabet.default, true) ? true : false"
+                    :draggable="draggable"
                     @button-clicked="getAlphabet"
                 ></alphabet>
             </ul>
@@ -45,7 +47,7 @@
 import Alphabet from "./alphabet.vue";
 
 export default {
-    props: ["consonants", "vowels", "propsAlphabet", "isWriting"],
+    props: ["consonants", "vowels", "propsAlphabet", "isWriting", "draggable"],
     
     components: {
         alphabet: Alphabet
@@ -102,6 +104,14 @@ export default {
                 this.vowelClass = this.vowelClass === 'hide-overflow' ? '' : 'hide-overflow'
                 this.isVowelActive = !this.isVowelActive
             }
+        },
+
+        dragstartHandler(ev) {
+            ev.dataTransfer.setData("text/plain", ev.target.id)
+        },
+
+        dropHandler(ev){
+            ev.preventDefault()
         }
     }
 };

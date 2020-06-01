@@ -6,6 +6,7 @@
             :consonants="this.consonants"
             :vowels="this.vowels"
             :propsAlphabet="currentAlphabet"
+            :draggable="false"
         ></alphabets>
         <my-canvas :alphabet="currentAlphabetURL"></my-canvas>
     </li>
