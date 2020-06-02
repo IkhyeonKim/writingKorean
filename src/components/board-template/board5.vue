@@ -1,6 +1,6 @@
 <template>
     <div class="boards">
-        template 1
+        board 5
         <alphabet-slot></alphabet-slot>
     </div>
 </template>

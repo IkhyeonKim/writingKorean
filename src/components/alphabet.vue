@@ -4,6 +4,7 @@
         @dragstart="dragStart"
         @dragover.stop
          :src="alphabet.default" alt="" 
+         :data-alphabet-key="alphabetKey"
          :id="alphabetKey" />
     </li>
 </template>
@@ -19,7 +20,7 @@ export default {
 
         dragStart(e) {
             const target = e.target
-            console.log(target, target.dataset.key)
+            // console.log(target, target.dataset.alphabetKey)
             e.dataTransfer.setData('alphabet_id', target.id)
         },
     }
