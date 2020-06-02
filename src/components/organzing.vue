@@ -8,13 +8,13 @@
             :propsAlphabet="currentAlphabet"
             :draggable="true"
         ></alphabets>
-        <board-template></board-template>
+        <boards></boards>
     </li>
 </template>
 
 <script>
 import alphabets from "./alphabets.vue";
-import boardTemplate from './boardTemplate.vue'
+import boards from './boards.vue'
 export default {
     props: ["consonants", "vowels"],
     data() {
@@ -24,7 +24,7 @@ export default {
     },
     components: {
         alphabets,
-        boardTemplate
+        boards
     },
     methods: {
         updateAlphabet(alphabetPath, isVowels, alphabetKey) {

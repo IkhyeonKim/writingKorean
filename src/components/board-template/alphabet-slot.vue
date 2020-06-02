@@ -1,8 +1,7 @@
 <template>
   <div @dragover.prevent
     @drop.prevent="drop"
-    id="my-board"
-   class="d-inline-block board">
+   class="slot">
       template
   </div>
 </template>
@@ -14,11 +13,12 @@ export default {
             const alphabet_id = e.dataTransfer.getData('alphabet_id')
 
             const alphabet = document.getElementById(alphabet_id)
+            // const alphabets = document.querySelectorAll()
             const cloneAlphabet = alphabet.cloneNode(false)
 
             cloneAlphabet.setAttribute('id', 'copied')
 
-            console.log(alphabet_id, alphabet)
+            console.log(cloneAlphabet, alphabet)
 
             e.target.appendChild(cloneAlphabet)
         }

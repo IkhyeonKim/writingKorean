@@ -23,11 +23,11 @@
                     :consonants="allConsonants"
                     :vowels="allVowels"
                 ></writing>
-                <board
+                <organzing
                     v-if="activeTab === 'organazing'"
                     :consonants="basicConsonants"
                     :vowels="basicVowels"
-                ></board>
+                ></organzing>
             </ul>
         </div>
     </div>
@@ -35,7 +35,7 @@
 
 <script>
 import writing from "./writing.vue";
-import board from "./board.vue";
+import organzing from "./organzing.vue";
 import Logo from "../assets/logo.svg";
 
 export default {
@@ -116,7 +116,7 @@ export default {
 
     components: {
         writing,
-        board
+        organzing
     },
 
     methods: {
