@@ -23,11 +23,11 @@
                     :consonants="allConsonants"
                     :vowels="allVowels"
                 ></writing>
-                <organzing
+                <organazing
                     v-if="activeTab === 'organazing'"
                     :consonants="basicConsonants"
                     :vowels="basicVowels"
-                ></organzing>
+                ></organazing>
             </ul>
         </div>
     </div>
@@ -35,14 +35,14 @@
 
 <script>
 import writing from "./writing.vue";
-import organzing from "./organzing.vue";
+import organazing from "./organazing.vue";
 import Logo from "../assets/logo.svg";
 
 export default {
     data() {
         return {
             logo: Logo,
-            activeTab: "writing",
+            activeTab: "organazing",
             allConsonants: null,
             allVowels: null,
             allGrayConsonants: null,
@@ -116,7 +116,7 @@ export default {
 
     components: {
         writing,
-        organzing
+        organazing 
     },
 
     methods: {

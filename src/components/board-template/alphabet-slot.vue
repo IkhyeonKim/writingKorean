@@ -3,7 +3,7 @@
     @drop.prevent="drop"
    class="slot"
    :class="addtionalClass">
-      template
+      SLOT
   </div>
 </template>
 

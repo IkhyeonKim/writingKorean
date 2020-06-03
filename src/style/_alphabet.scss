@@ -20,7 +20,7 @@
 
     li {
         display: inline-block;
-        border: 1px solid #808080;
+        border: 1px solid #999;
         border-radius: 4px;
         text-align: center;
         margin: 8px;
@@ -70,11 +70,11 @@
     cursor: pointer;
 
     &.active {
-        background-color: #c9c9c9;
+        background-color: #ededed;
     }
 
     &:hover,
     &:active {
-        background-color: #c9c9c9;
+        background-color: #ededed;
     }
 }

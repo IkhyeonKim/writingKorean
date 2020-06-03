@@ -1,6 +1,7 @@
 <template>
-    <div class="boards">
-        board 6
+    <div :class="['board-template', this.$options.name]">
+        <alphabet-slot></alphabet-slot>
+        <alphabet-slot></alphabet-slot>
         <alphabet-slot></alphabet-slot>
     </div>
 </template>
@@ -9,6 +10,7 @@
 import alphabetSlot from './alphabet-slot.vue'
 
 export default {
+    name: 'board6',
     components: {
         alphabetSlot
     }
