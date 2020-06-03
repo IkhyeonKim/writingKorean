@@ -64,6 +64,19 @@
             transform: rotate(225deg);
         }
     }
+
+    &:hover,
+    &:active {
+        background: #ed6767;
+        color: white;
+        border: 1px solid #fff;
+
+        &::after {
+            color: white;
+            border: solid #fff;
+            border-width: 0 3px 3px 0;
+        }
+    }
 }
 
 .alphabet {

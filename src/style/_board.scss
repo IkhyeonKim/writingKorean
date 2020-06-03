@@ -1,25 +1,26 @@
 .slot {
     display: inline-flex;
     justify-content: center;
-
+    align-items: center;
     width: 100%;
     height: 100%;
     background: beige;
+    border: 1px dotted #999;
 
     > img {
-        width: 45px;
-        height: 50px;
+        width: 70px;
+        height: 75px;
 
     }
 
     &.combined-row {
         grid-row: 1 / -1;
-        align-items: center;
+
     }
     
     &.combined-col {
         grid-column: 1 / -1;
-        justify-items: center;
+
     }
 }
 
@@ -53,8 +54,9 @@
 }
 
 .board-template {
-    margin-top: 8px;
     display: grid;
+    height: 400px;
+    margin-top: 8px;
 
     &.board1 {
         grid-template-rows: 1fr;
