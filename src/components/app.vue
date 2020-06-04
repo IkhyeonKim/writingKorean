@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             logo: Logo,
-            activeTab: "organazing",
+            activeTab: "writing",
             allConsonants: null,
             allVowels: null,
             allGrayConsonants: null,
